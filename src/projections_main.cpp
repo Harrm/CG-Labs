@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
         render->Save("results/projection.png");
 
         // Just show the resulted image
-        system("start results/projection.png");
+        //system("start results/projection.png");
     }
     catch (std::exception & e)
     {

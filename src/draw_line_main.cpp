@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
         render->Save("results/draw_line.png");
 
         // Just show the resulted image
-        system("start results/draw_line.png");
+        //system("start results/draw_line.png");
     }
     catch (std::exception & e)
     {

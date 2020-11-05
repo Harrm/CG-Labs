@@ -6,7 +6,7 @@ int main(int argc, char* argv[])
 {
     try
     {
-        cg::ZCulling* render = new cg::ZCulling(1920, 1080, "models/z_test.obj");
+        cg::ZCulling* render = new cg::ZCulling(1920, 1080, "models/CornellBox-Original.obj");
 
         render->Clear();
 
@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
         render->Save("results/depth_buffer.png");
 
         // Just show the resulted image
-        system("start results/depth_buffer.png");
+        //system("start results/depth_buffer.png");
     }
     catch (std::exception & e)
     {

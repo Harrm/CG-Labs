@@ -11,15 +11,14 @@ namespace cg
 	class ZCulling : public TriangleRasterization
 	{
 	public:
-		ZCulling(unsigned short width, unsigned short height, std::string obj_file);
-		virtual ~ZCulling();
+		ZCulling(uint32_t width, uint32_t height, std::string obj_file);
+		virtual ~ZCulling() = default;
 
-		void DrawScene();
 		void Clear();
 
 	protected:
-		void DrawTriangle(float4 triangle[3]);
-		void SetPixel(unsigned short x, unsigned short y, color color, float z);
+		void drawTriangle(cg::face t) override;
+		void SetPixel(uint32_t x, uint32_t y, color color, float z);
 		std::vector<float> depth_buffer;
 
 		std::vector<color> colors;

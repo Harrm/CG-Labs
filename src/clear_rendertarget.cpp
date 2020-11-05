@@ -5,31 +5,44 @@
 #include "stb_image_write.h"
 
 #include <stdexcept>
+#include <filesystem>
+#include <iostream>
 
 
-cg::ClearRenderTarget::ClearRenderTarget(unsigned short width, unsigned short height):
+cg::ClearRenderTarget::ClearRenderTarget(uint32_t width, uint32_t height):
     width(width),
-    height(height)
+    height(height),
+    frame_buffer(width * height, color{})
 {
-    throw std::runtime_error("Not implemented yet");
+    
 }
 
 cg::ClearRenderTarget::~ClearRenderTarget()
 {
-    throw std::runtime_error("Not implemented yet");
+    
 }
 
 void cg::ClearRenderTarget::Clear()
 {
-    throw std::runtime_error("Not implemented yet");
+    std::fill_n(frame_buffer.begin(), frame_buffer.size(), color{0, 0, 0});
 }
 
-void cg::ClearRenderTarget::Save(std::string filename) const
+void cg::ClearRenderTarget::Save(std::string_view filename) const
 {
-    throw std::runtime_error("Not implemented yet");
+    using std::string_literals::operator""s;
+    namespace fs = std::filesystem;
+    auto path = fs::path(filename).remove_filename();
+    if (!fs::exists(path)) {
+        fs::create_directory(path);
+    }
+    auto res = stbi_write_png(filename.data(), 
+        width, height, 3, frame_buffer.data(), width * sizeof(color));
+    if (res != 1) {
+        throw std::runtime_error("Error saving PNG file '"s + std::string(filename) + "'"s);
+    }
 }
 
-void cg::ClearRenderTarget::SetPixel(unsigned short x, unsigned short y, color color)
+void cg::ClearRenderTarget::SetPixel(uint32_t x, uint32_t y, color color)
 {
-    throw std::runtime_error("Not implemented yet");
+    frame_buffer[y * width + x] = std::move(color);
 }

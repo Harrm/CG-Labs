@@ -8,9 +8,9 @@ namespace cg
 
 	struct color
 	{
-		unsigned char r;
-		unsigned char g;
-		unsigned char b;
+		uint8_t r;
+		uint8_t g;
+		uint8_t b;
 
 		color()
 		{
@@ -19,7 +19,7 @@ namespace cg
 			b = 0;
 		}
 
-		color(unsigned char in_r, unsigned char in_g, unsigned char in_b)
+		color(uint8_t in_r, uint8_t in_g, uint8_t in_b)
 		{
 			r = in_r;
 			g = in_g;
@@ -31,17 +31,17 @@ namespace cg
 	class ClearRenderTarget
 	{
 	public:
-		ClearRenderTarget(unsigned short width, unsigned short height);
+		ClearRenderTarget(uint32_t width, uint32_t height);
 		virtual ~ClearRenderTarget();
 
 		void Clear();
-		void Save(std::string filename) const;
+		void Save(std::string_view filename) const;
 
 	protected:
-		void SetPixel(unsigned short x, unsigned short y, color color);
+		void SetPixel(uint32_t x, uint32_t y, color color);
 
-		unsigned short height;
-		unsigned short width;
+		uint32_t height;
+		uint32_t width;
 
 		std::vector<color> frame_buffer;
 	};

@@ -41,3 +41,5 @@ results/
 *.vcxproj.filters
 *.vcxproj.user
 *.sln
+
+build/

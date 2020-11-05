@@ -9,10 +9,10 @@ namespace cg
 	class LineDrawing : public ClearRenderTarget
 	{
 	public:
-		LineDrawing(unsigned short width, unsigned short height);
+		LineDrawing(uint32_t width, uint32_t height);
 		virtual ~LineDrawing();
 
-		void DrawLine(unsigned short x_begin, unsigned short y_begin, unsigned short x_end, unsigned short y_end, color color);
+		void DrawLine(uint32_t x_begin, uint32_t y_begin, uint32_t x_end, uint32_t y_end, color color);
 
 		void DrawScene();
 
